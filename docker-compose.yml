@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+    admin_catamarca_ciudad:
+        image: directus/directus:11.5.1
+        ports:
+            - 8055:8055
+        volumes:
+            - ./database:/directus/database
+            - ./uploads:/directus/uploads
+            - ./extensions:/directus/extensions
+        environment:
+            SECRET: "replace-with-random-value"
+            ADMIN_EMAIL: ""
+            ADMIN_PASSWORD: ""
+            DB_CLIENT: "pg"
+            DB_HOST: ""
+            DB_PORT: ""
+            DB_DATABASE: "db_admin_catamarca_ciudad"
+            DB_USER: ""
+            DB_PASSWORD: ""
+            WEBSOCKETS_ENABLED: "true"
+            # Configuración para usar DigitalOcean Spaces como almacenamiento de archivos
+            STORAGE_LOCATIONS: "s3"
+            STORAGE_S3_DRIVER: "s3"
+            STORAGE_S3_KEY: ""
+            STORAGE_S3_SECRET: ""
+            STORAGE_S3_BUCKET: "archivos-cc"
+            STORAGE_S3_ENDPOINT: "https://sfo3.digitaloceanspaces.com"
+            STORAGE_S3_REGION: "sfo3"
+            STORAGE_S3_ACL: "public-read"  # O cámbialo a "private" si necesitas acceso restringido
+            STORAGE_S3_DIRECTORY: "admin_catamarca_ciudad"  # Subcarpeta dentro del bucket (opcional)
